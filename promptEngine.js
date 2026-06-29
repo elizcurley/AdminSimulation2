@@ -1,13 +1,74 @@
-// ============================================================
-// Employee Corrective Meeting Simulation
-// Prompt Engine
-// ============================================================
-
+// promptEngine.js
 function getRandomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function generatePrompt(setting, role, concern, employee, evidencePackage) {
+function generateEmployeeName() {
+  const firstNames = [
+    "Jordan", "Taylor", "Morgan", "Alex", "Casey", "Riley", "Jamie", "Avery",
+    "Cameron", "Drew", "Sydney", "Robin", "Quinn", "Reese", "Devon", "Skyler",
+    "Marisol", "Naomi", "Elena", "Marcus", "Darius", "Priya", "Samira",
+    "Luis", "Jasmine", "Andre", "Nadia", "Evan", "Maya", "Noah"
+  ];
+
+  const lastNames = [
+    "Martinez", "Johnson", "Patel", "Williams", "Nguyen", "Garcia", "Brown",
+    "Davis", "Robinson", "Clark", "Lewis", "Walker", "Hall", "Allen",
+    "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott",
+    "Green", "Adams", "Baker", "Rivera", "Campbell", "Mitchell", "Carter"
+  ];
+
+  return `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`;
+}
+
+function generateEmployeeProfile() {
+  const ages = ["26", "29", "32", "35", "38", "41", "46", "52"];
+
+  const experienceLevels = [
+    "less than 1 year in this role",
+    "1 year in this role",
+    "2 years in this role",
+    "3 years in this role",
+    "5 years in this role",
+    "8 years in this role"
+  ];
+
+  const presentations = [
+    "anxious and somewhat embarrassed",
+    "guarded but trying to stay professional",
+    "frustrated and worried about being misunderstood",
+    "overwhelmed and somewhat distracted",
+    "calm on the surface but defensive when questioned",
+    "cooperative but hesitant to admit fault",
+    "tired and emotionally worn down"
+  ];
+
+  const accountabilityLevels = [
+    "takes partial responsibility but does not fully understand the impact",
+    "recognizes some concerns but feels the situation is more complicated",
+    "initially minimizes the concern but becomes more reflective if the supervisor asks thoughtful questions",
+    "accepts responsibility for some behaviors but resists broad criticism",
+    "feels the concern is somewhat unfair but is willing to talk if approached respectfully"
+  ];
+
+  const communicationStyles = [
+    "answers briefly at first and needs follow-up questions",
+    "talks around the issue before directly answering",
+    "shares information gradually as trust develops",
+    "becomes more specific when the supervisor asks concrete questions",
+    "uses examples to explain their perspective but may become defensive if interrupted"
+  ];
+
+  return {
+    name: generateEmployeeName(),
+    age: getRandomItem(ages),
+    experience: getRandomItem(experienceLevels),
+    presentation: getRandomItem(presentations),
+    accountability: getRandomItem(accountabilityLevels),
+    communicationStyle: getRandomItem(communicationStyles)
+  };
+}
+
 function generateSupervisorFile(employee, setting, role, concern, evidencePackage) {
   const evidenceList = evidencePackage
     .map(item => `- ${item}`)
@@ -26,9 +87,7 @@ Purpose of the meeting:
 The supervisor is meeting with ${employee.name} to discuss the documented performance concern, hear the employee's perspective, clarify expectations, and develop an appropriate corrective or improvement plan.`;
 }
 
-function generatePrompt(setting, role, concern) {
-  const employee = generateEmployeeProfile();
-  const evidencePackage = getRandomItem(concern.evidencePackages);
+function generatePrompt(setting, role, concern, employee, evidencePackage) {
   const supervisorFile = generateSupervisorFile(employee, setting, role, concern, evidencePackage);
 
   return `Please role play with me to simulate a realistic employee-supervisor corrective meeting.
@@ -38,7 +97,8 @@ You will be the employee: ${employee.name}.
 Your role is ${role} in ${setting}.
 We will be discussing this employee performance concern: ${concern.concern}
 
-Before the role play begins, provide the supervisor-facing background below. Do not add hidden employee motives or private explanations to the background.
+IMPORTANT STARTING INSTRUCTIONS:
+Begin by copying the Supervisor File exactly as written below. Do not add facts, dates, numbers, incidents, complaints, coaching history, or explanations that are not included in the Supervisor File. After copying the Supervisor File, write: "I am ready to begin the role play when you are." Then wait for my first supervisor statement.
 
 ${supervisorFile}
 
@@ -57,6 +117,7 @@ SIMULATION RULES:
 - Do not coach, evaluate, or grade the supervisor during the role play.
 - Do not suggest what the supervisor should say next.
 - Do not summarize the meeting while it is still happening.
+- Do not narrate transitions such as "Now beginning the role play."
 - Respond only as ${employee.name} would respond in that moment.
 - Keep responses conversational and realistic.
 - Do not be artificially agreeable, overly polished, or unusually encouraging.
@@ -72,7 +133,5 @@ ENDING RULES:
 - Do not end the meeting yourself.
 - The simulation is complete only when the supervisor clearly reaches an action plan, corrective plan, or documentation/signature point.
 - When that happens, briefly respond as ${employee.name} to the proposed plan and note whether you agree, partially agree, have concerns, or need clarification.
-- After the meeting concludes, wait for the supervisor to ask for feedback before providing any evaluation.
-
-Begin now by providing the supervisor-facing background from the Supervisor File in a clear, brief format. Then wait for my first supervisor statement.`;
+- After the meeting concludes, wait for the supervisor to ask for feedback before providing any evaluation.`;
 }
