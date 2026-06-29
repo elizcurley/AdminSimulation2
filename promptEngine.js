@@ -7,72 +7,7 @@ function getRandomItem(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
-function generateEmployeeName() {
-  const firstNames = [
-    "Jordan", "Taylor", "Morgan", "Alex", "Casey", "Riley", "Jamie", "Avery",
-    "Cameron", "Drew", "Sydney", "Robin", "Quinn", "Reese", "Devon", "Skyler",
-    "Marisol", "Naomi", "Elena", "Marcus", "Darius", "Priya", "Samira",
-    "Luis", "Jasmine", "Andre", "Nadia", "Evan", "Maya", "Noah"
-  ];
-
-  const lastNames = [
-    "Martinez", "Johnson", "Patel", "Williams", "Nguyen", "Garcia", "Brown",
-    "Davis", "Robinson", "Clark", "Lewis", "Walker", "Hall", "Allen",
-    "Young", "Hernandez", "King", "Wright", "Lopez", "Hill", "Scott",
-    "Green", "Adams", "Baker", "Rivera", "Campbell", "Mitchell", "Carter"
-  ];
-
-  return `${getRandomItem(firstNames)} ${getRandomItem(lastNames)}`;
-}
-
-function generateEmployeeProfile() {
-  const ages = ["26", "29", "32", "35", "38", "41", "46", "52"];
-
-  const experienceLevels = [
-    "less than 1 year in this role",
-    "1 year in this role",
-    "2 years in this role",
-    "3 years in this role",
-    "5 years in this role",
-    "8 years in this role"
-  ];
-
-  const presentations = [
-    "anxious and somewhat embarrassed",
-    "guarded but trying to stay professional",
-    "frustrated and worried about being misunderstood",
-    "overwhelmed and somewhat distracted",
-    "calm on the surface but defensive when questioned",
-    "cooperative but hesitant to admit fault",
-    "tired and emotionally worn down"
-  ];
-
-  const accountabilityLevels = [
-    "takes partial responsibility but does not fully understand the impact",
-    "recognizes some concerns but feels the situation is more complicated",
-    "initially minimizes the concern but becomes more reflective if the supervisor asks thoughtful questions",
-    "accepts responsibility for some behaviors but resists broad criticism",
-    "feels the concern is somewhat unfair but is willing to talk if approached respectfully"
-  ];
-
-  const communicationStyles = [
-    "answers briefly at first and needs follow-up questions",
-    "talks around the issue before directly answering",
-    "shares information gradually as trust develops",
-    "becomes more specific when the supervisor asks concrete questions",
-    "uses examples to explain their perspective but may become defensive if interrupted"
-  ];
-
-  return {
-    name: generateEmployeeName(),
-    age: getRandomItem(ages),
-    experience: getRandomItem(experienceLevels),
-    presentation: getRandomItem(presentations),
-    accountability: getRandomItem(accountabilityLevels),
-    communicationStyle: getRandomItem(communicationStyles)
-  };
-}
-
+function generatePrompt(setting, role, concern, employee, evidencePackage) {
 function generateSupervisorFile(employee, setting, role, concern, evidencePackage) {
   const evidenceList = evidencePackage
     .map(item => `- ${item}`)
