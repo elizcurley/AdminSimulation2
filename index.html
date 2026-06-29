@@ -12,7 +12,7 @@
     <header>
       <h1>Employee Corrective Meeting Simulation</h1>
       <p class="intro">
-        Use this tool to generate a realistic employee–supervisor meeting prompt.
+        Use this tool to generate a realistic employee-supervisor corrective meeting prompt.
         Copy the full prompt and paste it into Copilot or Gemini.
       </p>
     </header>
@@ -21,17 +21,15 @@
       <h2>Step 1: Spin for a case</h2>
       <p>
         Click the button below until you receive a workplace situation that fits
-        the assignment. The employee’s attitude and responses will vary naturally
-        during the simulation.
+        the assignment.
       </p>
 
-      <button id="generateBtn" type="button">
-        Spin Case
-      </button>
+      <button id="generateBtn" type="button">Spin Case</button>
     </section>
 
     <section class="card hidden" id="casePreview">
       <h2>Your Case</h2>
+      <p><strong>Employee:</strong> <span id="employeeNameOutput"></span></p>
       <p><strong>Workplace setting:</strong> <span id="settingOutput"></span></p>
       <p><strong>Employee role:</strong> <span id="roleOutput"></span></p>
       <p><strong>Performance concern:</strong> <span id="issueOutput"></span></p>
@@ -46,129 +44,7 @@
 
       <textarea id="promptOutput" readonly></textarea>
 
-      <button id="copyBtn" type="button">
-        Copy Prompt
-      </button>
-
-      <p id="copyStatus" class="copy-status" aria-live="polite"></p>
-    </section>
-  </main>
-
-  <script src="cases.js"></script>
-  <script src="promptEngine.js"></script>
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Employee Corrective Meeting Simulation</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <main class="container">
-    <header>
-      <h1>Employee Corrective Meeting Simulation</h1>
-      <p class="intro">
-        Use this tool to generate a realistic employee–supervisor meeting prompt.
-        Copy the full prompt and paste it into Copilot or Gemini.
-      </p>
-    </header>
-
-    <section class="card">
-      <h2>Step 1: Spin for a case</h2>
-      <p>
-        Click the button below until you receive a workplace situation that fits
-        the assignment. The employee’s attitude and responses will vary naturally
-        during the simulation.
-      </p>
-
-      <button id="generateBtn" type="button">
-        Spin Case
-      </button>
-    </section>
-
-    <section class="card hidden" id="casePreview">
-      <h2>Your Case</h2>
-      <p><strong>Workplace setting:</strong> <span id="settingOutput"></span></p>
-      <p><strong>Employee role:</strong> <span id="roleOutput"></span></p>
-      <p><strong>Performance concern:</strong> <span id="issueOutput"></span></p>
-    </section>
-
-    <section class="card hidden" id="promptSection">
-      <h2>Step 2: Copy your prompt</h2>
-      <p class="instruction">
-        Do not edit the prompt. Copy the full text below and paste it into
-        Copilot or Gemini. Then begin the simulation as the supervisor.
-      </p>
-
-      <textarea id="promptOutput" readonly></textarea>
-
-      <button id="copyBtn" type="button">
-        Copy Prompt
-      </button>
-
-      <p id="copyStatus" class="copy-status" aria-live="polite"></p>
-    </section>
-  </main>
-
-  <script src="cases.js"></script>
-  <script src="promptEngine.js"></script>
-  <script src="script.js"></script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Employee Corrective Meeting Simulation</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <main class="container">
-    <header>
-      <h1>Employee Corrective Meeting Simulation</h1>
-      <p class="intro">
-        Use this tool to generate a realistic employee–supervisor meeting prompt.
-        Copy the full prompt and paste it into Copilot or Gemini.
-      </p>
-    </header>
-
-    <section class="card">
-      <h2>Step 1: Spin for a case</h2>
-      <p>
-        Click the button below until you receive a workplace situation that fits
-        the assignment. The employee’s attitude and responses will vary naturally
-        during the simulation.
-      </p>
-
-      <button id="generateBtn" type="button">
-        Spin Case
-      </button>
-    </section>
-
-    <section class="card hidden" id="casePreview">
-      <h2>Your Case</h2>
-      <p><strong>Workplace setting:</strong> <span id="settingOutput"></span></p>
-      <p><strong>Employee role:</strong> <span id="roleOutput"></span></p>
-      <p><strong>Performance concern:</strong> <span id="issueOutput"></span></p>
-    </section>
-
-    <section class="card hidden" id="promptSection">
-      <h2>Step 2: Copy your prompt</h2>
-      <p class="instruction">
-        Do not edit the prompt. Copy the full text below and paste it into
-        Copilot or Gemini. Then begin the simulation as the supervisor.
-      </p>
-
-      <textarea id="promptOutput" readonly></textarea>
-
-      <button id="copyBtn" type="button">
-        Copy Prompt
-      </button>
+      <button id="copyBtn" type="button">Copy Prompt</button>
 
       <p id="copyStatus" class="copy-status" aria-live="polite"></p>
     </section>
