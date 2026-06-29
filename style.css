@@ -1,0 +1,116 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  background: #f6f6f6;
+  color: #222;
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+header {
+  margin-bottom: 24px;
+}
+
+h1 {
+  margin-bottom: 8px;
+  font-size: 2rem;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+.intro {
+  font-size: 1.05rem;
+  color: #444;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+button {
+  display: inline-block;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #782f40;
+  color: #fff;
+}
+
+button:hover,
+button:focus {
+  background: #5e2432;
+}
+
+button:focus {
+  outline: 3px solid #ceb888;
+  outline-offset: 3px;
+}
+
+textarea {
+  width: 100%;
+  min-height: 420px;
+  resize: vertical;
+  padding: 16px;
+  margin: 12px 0;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  border: 1px solid #bbb;
+  border-radius: 8px;
+  background: #fafafa;
+}
+
+.instruction {
+  font-weight: 700;
+}
+
+.copy-status {
+  min-height: 1.5em;
+  font-weight: 700;
+  color: #2f5d3a;
+}
+
+.hidden {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .container {
+    padding: 16px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  textarea {
+    min-height: 360px;
+  }
+}
