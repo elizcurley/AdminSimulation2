@@ -1,8 +1,4 @@
-// ============================================================
-// Employee Corrective Meeting Simulation
-// User Interface Logic
-// ============================================================
-
+// script.js
 const generateBtn = document.getElementById("generateBtn");
 const copyBtn = document.getElementById("copyBtn");
 
