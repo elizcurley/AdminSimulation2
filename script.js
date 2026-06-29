@@ -9,6 +9,7 @@ const copyBtn = document.getElementById("copyBtn");
 const casePreview = document.getElementById("casePreview");
 const promptSection = document.getElementById("promptSection");
 
+const employeeNameOutput = document.getElementById("employeeNameOutput");
 const settingOutput = document.getElementById("settingOutput");
 const roleOutput = document.getElementById("roleOutput");
 const issueOutput = document.getElementById("issueOutput");
@@ -17,53 +18,43 @@ const promptOutput = document.getElementById("promptOutput");
 const copyStatus = document.getElementById("copyStatus");
 
 generateBtn.addEventListener("click", () => {
+  const workplace = getRandomItem(workplaceCases);
+  const role = getRandomItem(workplace.roles);
+  const concern = getRandomItem(performanceConcerns);
 
-    // Select a random workplace
-    const workplace = getRandomItem(workplaceCases);
+  const employee = generateEmployeeProfile();
+  const evidencePackage = getRandomItem(concern.evidencePackages);
 
-    // Select a random role from that workplace
-    const role = getRandomItem(workplace.roles);
+  employeeNameOutput.textContent = employee.name;
+  settingOutput.textContent = workplace.setting;
+  roleOutput.textContent = role;
+  issueOutput.textContent = concern.title;
 
-    // Select a random employee performance concern
-    const concern = getRandomItem(performanceConcerns);
+  promptOutput.value = generatePrompt(
+    workplace.setting,
+    role,
+    concern,
+    employee,
+    evidencePackage
+  );
 
-    // Display the selected case information
-    settingOutput.textContent = workplace.setting;
-    roleOutput.textContent = role;
-    issueOutput.textContent = concern.title;
+  casePreview.classList.remove("hidden");
+  promptSection.classList.remove("hidden");
 
-    // Generate the prompt
-    promptOutput.value = generatePrompt(
-        workplace.setting,
-        role,
-        concern
-    );
-
-    // Reveal hidden sections
-    casePreview.classList.remove("hidden");
-    promptSection.classList.remove("hidden");
-
-    // Reset copy message
-    copyStatus.textContent = "";
+  copyStatus.textContent = "";
+  copyBtn.textContent = "Copy Prompt";
 });
 
 copyBtn.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(promptOutput.value);
+  } catch (error) {
+    promptOutput.select();
+    document.execCommand("copy");
+  }
 
-    try {
+  copyStatus.textContent =
+    "Prompt copied! Paste it into Copilot or Gemini to begin your simulation.";
 
-        await navigator.clipboard.writeText(promptOutput.value);
-
-        copyStatus.textContent =
-            "Prompt copied! Paste it into Copilot or Gemini to begin your simulation.";
-
-    } catch (error) {
-
-        promptOutput.select();
-
-        document.execCommand("copy");
-
-        copyStatus.textContent =
-            "Prompt copied! Paste it into Copilot or Gemini to begin your simulation.";
-    }
-
+  copyBtn.textContent = "Copied!";
 });
